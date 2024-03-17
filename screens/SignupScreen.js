@@ -153,7 +153,7 @@ export default function SignupScreen() {
               value={password}
               onChangeText={(value) => setPassword(value)}
               placeholderTextColor={"black"}
-              secureTextEntry={showPassword}
+              secureTextEntry={!showPassword}
             />
             <TouchableOpacity
               onPress={() => setShowPassword(!showPassword)}
@@ -161,9 +161,9 @@ export default function SignupScreen() {
             >
                 {
                     showPassword? 
-                    <Feather name="eye-off" size={20} color="black" />
-                    :
                     <Feather name="eye" size={20} color="black" />
+                    :
+                    <Feather name="eye-off" size={20} color="black" />
                 }
             </TouchableOpacity>
           </Animated.View>
