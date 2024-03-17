@@ -3,6 +3,12 @@ import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import foodiee from "../assets/images/foodie.jpg"
 import tw from "twrnc";
+import Animated, {
+  FadeIn,
+  FadeOut,
+  FadeInUp,
+  FadeInDown,
+} from "react-native-reanimated";
 
 const { width, height } = Dimensions.get("window");
 
@@ -11,7 +17,7 @@ export default function SplashScreen () {
   useEffect(() => {
     setTimeout(() => {
       navigate.replace("onboarding");
-    }, 3000);
+    }, 4000);
   }, []);
   return (
     <View className ={"flex-1 flex justify-center items-center"} style={tw`flex-1 flex justify-center items-center`}>
@@ -23,9 +29,11 @@ export default function SplashScreen () {
 
             
             <View style={tw`  h-full w-full   bg-black/20`}>
-                <View className="my-auto mx-auto p-7 bg-yellow-600 rounded-full  ">
-                    <Image source={require('../assets/images/Foodie.png')}  className="mx-auto"/> 
-                </View>
+                <Animated.View
+            entering={FadeInUp.delay(300).duration(1000).springify()}
+                 className="my-auto mx-auto   ">
+                    <Image source={require('../assets/images/Foodie.png')}  className="mx-auto w-[75vw] h-[35vh] rounded-full"/> 
+                </Animated.View>
             </View>
           </View>
     

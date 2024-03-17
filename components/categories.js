@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { getCategories } from '../api';
 import { urlFor } from '../sanity';
 import tw from 'twrnc'
+import Animated, {
+  FadeInLeft,
+} from "react-native-reanimated";
 
 
 export default function Categories() {
@@ -29,7 +32,9 @@ export default function Categories() {
                     let btnClass = isActive? 'bg-gray-600' : 'bg-gray-200';
                     let textClass = isActive? 'font-extrabold text-gray-800 ': 'text-gray-500'
                     return(
-                        <View key={index} className="flex justify-center items-center mr-6" style={tw`flex justify-center items-center mr-6`}>
+                        <Animated.View
+                        entering={FadeInLeft.delay(300).duration(1000).springify().damping()}
+                        key={index} className="flex justify-center items-center mr-6" style={tw`flex justify-center items-center mr-6`}>
                             <TouchableOpacity
                             onPress={()=>setActiveCategory(categories._id)}
                             className={"p-1 rounded-full "+btnClass}>
@@ -39,7 +44,7 @@ export default function Categories() {
                                 
                             </TouchableOpacity>
                             <Text className={"text-sm"+textClass}>{categories.name}</Text>
-                        </View>
+                        </Animated.View>
                     )
                 })
             }

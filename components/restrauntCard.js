@@ -6,6 +6,9 @@ import { themeColors } from '../theme'
 import { useNavigation } from '@react-navigation/native'
 import { urlFor } from '../sanity'
 import tw from 'twrnc'
+import Animated, {
+  FadeInLeft, FadeInUp,
+} from "react-native-reanimated";
 
 export default function RestrauntCard({item}) {
     const navigation=useNavigation();
@@ -14,7 +17,9 @@ export default function RestrauntCard({item}) {
      onPress={()=>navigation.navigate('Restraunt',{...item})}
      
     >
-        <View style={{
+        <Animated.View
+                        entering={FadeInUp.delay(400).duration(1000).springify()}
+        style={{
             shadowColor:themeColors.bgColor(1),
             shadowRadius:7
         }} 
@@ -36,7 +41,7 @@ export default function RestrauntCard({item}) {
               <Text className="text-gray-700 text-xs">Nearby. {item.address}</Text>
             </View>
          </View>
-        </View>
+        </Animated.View>
     </TouchableWithoutFeedback>
   )
 }

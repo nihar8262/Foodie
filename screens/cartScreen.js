@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import { featured } from "../constants";
 import { themeColors } from "../theme";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign,FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRestaurant } from "../slices/restarauntSlice";
@@ -47,6 +47,14 @@ export default function CartScreen() {
           <Text className="text-center font-bold text-xl">Your Cart</Text>
           <Text className="text-center text-gray-500">{restaraunt.name}</Text>
         </View>
+
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Home")}
+          style={{ backgroundColor: themeColors.bgColor(1) }}
+          className="absolute z-10 rounded-full p-2 shadow top-10 right-4"
+        >
+          <FontAwesome name="home" size={20} color="white" />
+        </TouchableOpacity>
       </View>
 
       {/* Track */}

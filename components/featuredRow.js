@@ -3,6 +3,9 @@ import React from 'react'
 import { themeColors } from '../theme'
 import RestrauntCard from './restrauntCard'
 import tw from 'twrnc'
+import Animated, {
+  FadeInLeft,
+} from "react-native-reanimated";
 
 export default function FeaturedRow({title,description,restraunts}) {
   return (
